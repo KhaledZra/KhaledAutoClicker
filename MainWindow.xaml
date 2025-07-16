@@ -1,0 +1,58 @@
+﻿<Window x:Class="KhaledsAutoClicker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KhaledsAutoClicker"
+        mc:Ignorable="d"
+        Title="Khaled's Auto Clicker - v0.1" Height="450" Width="800"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,5">
+            <TextBlock Text="Tutorial: 1 second == 1000ms. Lower ms value means you will click more. 100ms is the fastest allowed speed" FontSize="12"/>
+            <TextBlock Text="Program works minimized so just launch it, set your values and minimize it (don't close!)." FontSize="12"/>
+            <TextBlock Text="Program does not save so when closed it resets all values." FontSize="12"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,5">
+            <CheckBox Name="chkRandomize" Content="Randomize Clicks" Margin="0,10,0,0" Checked="chkRandomize_Checked"
+                      Unchecked="chkRandomize_Unchecked"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5" Name="RegularPanel">
+            <Label Width="240" Content="Click Delay Interval (In milliseconds!)" />
+            <TextBox Name="clickDelayInterval" Width="50" PreviewTextInput="OnlyAllowNumbers" MaxLength="6" />
+            <TextBlock Text="ms" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,5" Visibility="Hidden" Name="RandomizePanel">
+            <Label Width="240" Content="Randomize Click Range (In milliseconds!)" />
+            <TextBlock Text="Min" />
+            <TextBox Name="randomizeRangeMin" Width="50" PreviewTextInput="OnlyAllowNumbers" MaxLength="6" />
+            <TextBlock Margin="0,0,10, 0" Text="ms"/>
+            
+            <TextBlock Text="Max" />
+            <TextBox Name="randomizeRangeMax" Width="50" PreviewTextInput="OnlyAllowNumbers" MaxLength="6" />
+            <TextBlock Text="ms" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="20">
+            <TextBlock Text="Bind Start/Stop key:" FontSize="16" />
+
+            <Button Name="btnBindKey" Content="Click to Bind Key" Click="btnBindKey_Click" Margin="0,10" />
+
+            <TextBlock Name="txtBoundKey" Text="No key bound." FontSize="14" />
+            
+            <TextBlock Name="autoclickTextBlock" Text="Auto Clicker is Inactive" FontSize="16" Foreground="Red"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
